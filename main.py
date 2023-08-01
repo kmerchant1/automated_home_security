@@ -1,33 +1,24 @@
 import streamlit as st
 import cv2
 
+from live_feed_streamlit import run_live_feed
+
+
+#sidebar component
+with st.sidebar:
+    st.title('Automated Home Security')
+    choice = st.radio('Navigation',['Live Feed',
+                                    'Verified People',
+                                    'Config'])
+
+if choice == 'Live Feed':
+    
+    view = st.checkbox('View Security Feed')
+    st.write(view)
+    if view:
+        run_live_feed()
+    else:
+        pass
 
 
 
-
-
-
-
-
-
-
-
-
-
-def run_live_feed():
-
-    cap = cv2.VideoCapture(0)
-    frame_placeholder = st.empty()
-    stop = st.button('Stop')
-
-    while True:
-        if stop:
-            break
-        ret, frame = cap.read()
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame_placeholder.image(frame, channels='RGB')
-
-        
-
-    cap.release()
-    cv2.destroyAllWindows()
