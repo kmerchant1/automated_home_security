@@ -1,8 +1,8 @@
 import streamlit as st
 import cv2
 import face_recognition
-from live_feed_streamlit import run_live_feed
-
+from security import run_security
+import pickle
 
 #sidebar component
 with st.sidebar:
@@ -13,10 +13,18 @@ with st.sidebar:
 
 if choice == 'Live Feed':
     
-    view = st.checkbox('View Security Feed')
+    
+    view = st.checkbox('Activate Security')
     st.write(view)
+    
+    #load encoded file
+    file = open('../resources/verified_file.p', 'rb')
+    encode_list_with_id = pickle.load(file)
+    file.close()
+    known_encode, id_list = encode_list_with_id
+    print(id_list)
     if view:
-        run_live_feed()
+        run_security()
     else:
         pass
 
