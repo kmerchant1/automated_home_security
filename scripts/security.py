@@ -47,7 +47,7 @@ def run_security():
             if matches[match_index] == True:
                 top,right,bottom,left = face_loc
                 top,right,bottom,left = top*4,right*4,bottom*4,left*4
-                frame = cv2.rectangle(frame, (left,top), (right,bottom), color=(255,0,0))
+                frame = cv2.rectangle(frame, (left,top), (right,bottom), (0,255,0),3)
                 
         
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

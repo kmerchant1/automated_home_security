@@ -22,7 +22,7 @@ if choice == 'Live Feed':
     encode_list_with_id = pickle.load(file)
     file.close()
     known_encode, id_list = encode_list_with_id
-    print(id_list)
+    #print(id_list)
     if view:
         run_security()
     else:
