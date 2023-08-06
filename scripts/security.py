@@ -35,7 +35,6 @@ def run_security():
         current_encodings = face_recognition.face_encodings(img_scaled, current_face)
         
         
-        
         #compare current encodings with verified encodings
         for encode_face, face_loc in zip(current_encodings, current_face):
             matches = face_recognition.compare_faces(encode_list, encode_face)
